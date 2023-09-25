@@ -91,249 +91,257 @@ export default function ReservationForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-        <FormField
-          control={form.control}
-          name='name'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nombres*</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type='text'
-                  className='h-10 outline-none rounded-lg indent-2'
-                  placeholder='Ingresa tu nombre'
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='surname'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Apellidos*</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type='text'
-                  className='h-10 outline-none rounded-lg indent-2'
-                  placeholder='Ingresa tu apellido'
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='dni'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Cédula*</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type='text'
-                  className='h-10 outline-none rounded-lg indent-2'
-                  placeholder='Ingresa tu dni'
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='phone'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Teléfono*</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type='text'
-                  className='h-10 outline-none rounded-lg indent-2'
-                  placeholder='Ingresa tu número de teléfono'
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email*</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type='email'
-                  className='h-10 outline-none rounded-lg indent-2'
-                  placeholder='Ingresa tu correo electrónico'
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='event'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tipo de evento*</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+    <div className='container mx-auto px-4'>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+          <FormField
+            control={form.control}
+            name='name'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombres*</FormLabel>
                 <FormControl>
-                  <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
-                    <SelectValue placeholder='Selecciona el tipo de evento' />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value='Cumpleaños'>Cumpleaños</SelectItem>
-                  <SelectItem value='Aniversario'>Aniversario</SelectItem>
-                  <SelectItem value='Social'>Social</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='dateEvent'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Día*</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={'outline'}
-                      className={cn(
-                        'w-full pl-3 text-left font-normal',
-                        !field.value && 'text-muted-foreground'
-                      )}>
-                      {field.value ? (
-                        format(field.value, 'PPP', { locale: es })
-                      ) : (
-                        <span>Selecciona una fecha</span>
-                      )}
-                      <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className='w-auto p-0' align='start'>
-                  <Calendar
-                    mode='single'
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={date =>
-                      date > new Date() || date < new Date('1900-01-01')
-                    }
-                    locale={es}
-                    initialFocus
+                  <Input
+                    {...field}
+                    type='text'
+                    className='h-10 outline-none rounded-lg indent-2'
+                    placeholder='Ingresa tu nombre'
                   />
-                </PopoverContent>
-              </Popover>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='timeEvent'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Hora*</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
-                    <SelectValue placeholder='Selecciona la hora del evento' />
-                  </SelectTrigger>
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value='12pm'>12pm</SelectItem>
-                  <SelectItem value='1pm'>1pm</SelectItem>
-                  <SelectItem value='2pm'>2pm</SelectItem>
-                  <SelectItem value='3pm'>3pm</SelectItem>
-                  <SelectItem value='4pm'>4pm</SelectItem>
-                  <SelectItem value='5pm'>5pm</SelectItem>
-                  <SelectItem value='6pm'>6pm</SelectItem>
-                  <SelectItem value='7pm'>7pm</SelectItem>
-                  <SelectItem value='8pm'>8pm</SelectItem>
-                  <SelectItem value='9pm'>9pm</SelectItem>
-                  <SelectItem value='10pm'>10pm</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='people'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nr. de comensales*</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
-                    <SelectValue placeholder='Selecciona la cantidad de invitados' />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value='+2'>+2</SelectItem>
-                  <SelectItem value='+5'>+5</SelectItem>
-                  <SelectItem value='+8'>+8</SelectItem>
-                  <SelectItem value='+10'>+10</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='request'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Peticiones</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder='Cuentanos que petición tienes en mente'
-                  className='resize-none'
-                  {...field}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <div className='flex justify-center'>
-          <Button type='submit' className='btn-md bg-red-200 mx-auto'>
-            {!localLoading ? (
-              'Enviar'
-            ) : (
-              <IconLoader2 className='animate-spin' size={20} />
+                <FormMessage />
+              </FormItem>
             )}
-          </Button>
-        </div>
-      </form>
-    </Form>
+          />
+
+          <FormField
+            control={form.control}
+            name='surname'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Apellidos*</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type='text'
+                    className='h-10 outline-none rounded-lg indent-2'
+                    placeholder='Ingresa tu apellido'
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='dni'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Cédula*</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type='text'
+                    className='h-10 outline-none rounded-lg indent-2'
+                    placeholder='Ingresa tu dni'
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='phone'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Teléfono*</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type='text'
+                    className='h-10 outline-none rounded-lg indent-2'
+                    placeholder='Ingresa tu número de teléfono'
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='email'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email*</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type='email'
+                    className='h-10 outline-none rounded-lg indent-2'
+                    placeholder='Ingresa tu correo electrónico'
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='event'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tipo de evento*</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
+                      <SelectValue placeholder='Selecciona el tipo de evento' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value='Cumpleaños'>Cumpleaños</SelectItem>
+                    <SelectItem value='Aniversario'>Aniversario</SelectItem>
+                    <SelectItem value='Social'>Social</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='dateEvent'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Día*</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={'outline'}
+                        className={cn(
+                          'w-full pl-3 text-left font-normal',
+                          !field.value && 'text-muted-foreground'
+                        )}>
+                        {field.value ? (
+                          format(field.value, 'PPP', { locale: es })
+                        ) : (
+                          <span>Selecciona una fecha</span>
+                        )}
+                        <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className='w-auto p-0' align='start'>
+                    <Calendar
+                      mode='single'
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={date =>
+                        date > new Date() || date < new Date('1900-01-01')
+                      }
+                      locale={es}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='timeEvent'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Hora*</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
+                      <SelectValue placeholder='Selecciona la hora del evento' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value='12pm'>12pm</SelectItem>
+                    <SelectItem value='1pm'>1pm</SelectItem>
+                    <SelectItem value='2pm'>2pm</SelectItem>
+                    <SelectItem value='3pm'>3pm</SelectItem>
+                    <SelectItem value='4pm'>4pm</SelectItem>
+                    <SelectItem value='5pm'>5pm</SelectItem>
+                    <SelectItem value='6pm'>6pm</SelectItem>
+                    <SelectItem value='7pm'>7pm</SelectItem>
+                    <SelectItem value='8pm'>8pm</SelectItem>
+                    <SelectItem value='9pm'>9pm</SelectItem>
+                    <SelectItem value='10pm'>10pm</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='people'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nr. de comensales*</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className='h-10 outline-none rounded-lg indent-2'>
+                      <SelectValue placeholder='Selecciona la cantidad de invitados' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value='+2'>+2</SelectItem>
+                    <SelectItem value='+5'>+5</SelectItem>
+                    <SelectItem value='+8'>+8</SelectItem>
+                    <SelectItem value='+10'>+10</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='request'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Peticiones</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder='Cuentanos que petición tienes en mente'
+                    className='resize-none'
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <div className='flex justify-center'>
+            <Button type='submit' className='btn-md bg-primary text-white mx-auto'>
+              {!localLoading ? (
+                'Enviar'
+              ) : (
+                <IconLoader2 className='animate-spin' size={20} />
+              )}
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
   )
 }

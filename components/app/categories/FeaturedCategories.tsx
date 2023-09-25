@@ -22,7 +22,7 @@ export default function FeaturedCategories({
               Categorías
             </h2>
             <Link
-              href={`/${restaurant}/promotions`}
+              href={`/${restaurant}/categories`}
               className='text-xs font-normal text-copy'>
               Ver más
             </Link>
@@ -32,7 +32,7 @@ export default function FeaturedCategories({
             <div className='space-x-4 flex'>
               {!loading
                 ? categories?.map((category, key) => (
-                    <button key={key} className="bg-white text-copy rounded-lg text-sm h-[40px] w-[70px] flex items-center justify-center">{category.name}</button>
+                    <button key={key} className="bg-white text-copy rounded-lg text-sm h-[40px] w-fit whitespace-nowrap px-1 flex items-center justify-center">{category.name}</button>
                   ))
                 : Array.from(new Array(5)).map((_, key) => (
                     <Skeleton key={key} className='h-[40px] w-[70px]' />

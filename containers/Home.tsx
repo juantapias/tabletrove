@@ -16,11 +16,10 @@ type IProps = {
 
 export default function Home({ restaurantSlug }: IProps) {
   const { data: restaurant, isFetching } = useRestaurant(restaurantSlug)
-  console.log('🚀 ~ file: Home.tsx:18 ~ Home ~ restaurant:', restaurant)
 
   return (
     <Fragment >
-      <Header title="Inicio" />
+      <Header title="Inicio" isHome />
       <FeaturedProms loading={isFetching} />
       <div className="content-home space-y-4">
         <FeaturedCategories

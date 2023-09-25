@@ -29,7 +29,7 @@ export default function FeaturedProms({ loading }: IProps) {
                     </div>
                   ))
                 : Array.from(new Array(5)).map((_, key) => (
-                    <Skeleton key={key} className='h-[128px] w-[256px]' />
+                    <Skeleton key={key} className='h-[400px] w-full' />
                   ))}
             </Slider>
           </div>

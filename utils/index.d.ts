@@ -31,7 +31,8 @@ export interface IProduct {
   id: string
   name: string
   description: string
-  price: string
+  price: number
+  quantity?: number | undefined
   thumbnail: IImage
   tag?: string
 }
@@ -44,6 +45,14 @@ export interface ICategory {
   thumbnail: IImage
 }
 
+export interface IProm {
+  name: string
+  description: string
+  thumbnail: IImage
+  price: string
+  tag?: string
+}
+
 export interface Restaurant {
   restaurant: IRestaurant
 }
@@ -52,4 +61,18 @@ export interface IRestaurant {
   info: IInfo
   categories: ICategory[]
   products: IProduct[]
+  promos: IProms[]
+}
+
+export interface IBooking {
+  name: string
+  surname: string
+  dni: string
+  phone: string
+  mail: string
+  event: string
+  timeEvent: string
+  dateEvent: any
+  people: string
+  request: string
 }

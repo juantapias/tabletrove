@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
+import { cn, formatPrice } from '@/lib/utils'
 import { IProduct } from '@/utils'
 
 type IProp = {
@@ -7,6 +7,7 @@ type IProp = {
 }
 
 export default function ArticleFeaturedProduct({ product }: IProp) {
+  
   return (
     <article
       className={cn(
@@ -30,7 +31,9 @@ export default function ArticleFeaturedProduct({ product }: IProp) {
             ? `${product.name?.substring(0, 16)}...`
             : product?.name}
         </h3>
-        <span className='text-primary text-lg leading-none'>${product?.price}</span>
+        <span className='text-primary text-lg leading-none'>
+          ${formatPrice(product?.price)}
+        </span>
       </div>
       <button className='w-full text-sm text-white rounded-lg justify-around bg-primary py-1'>
         Agregar
