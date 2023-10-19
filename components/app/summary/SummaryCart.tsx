@@ -18,7 +18,7 @@ export default function SummaryCart({ products }: IProps) {
     <div className='container mx-auto px-4'>
       <div className='grid grid-rows-1'>
         <div className='grid grid-cols-1 gap-4'>
-          {cart.length > 0 ? (
+          {cart && cart.length > 0 ? (
             <div className='bg-white rounded-3xl p-4 space-y-5'>
               <div className='flex justify-end'>
                 <button onClick={clearCart}>

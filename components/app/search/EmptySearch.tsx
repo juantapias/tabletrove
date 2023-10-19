@@ -15,9 +15,13 @@ export default function EmptySearch({ title, description, goHome }: IProps) {
             <p className='text-gray-400 text-center text-sm'>{description}</p>
           )}
           {goHome && (
-            <Link href='/' className='btn-md mx-auto bg-red-300'>
-              Volver al inicio
-            </Link>
+            <div className='flex justify-center'>
+              <Link
+                href='/'
+                className='bg-primary text-white rounded-lg px-4 py-2 text-base font-semibold'>
+                Volver al inicio
+              </Link>
+            </div>
           )}
         </div>
       </div>
