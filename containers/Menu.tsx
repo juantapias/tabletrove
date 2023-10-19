@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Header from '@/components/app/base/Header'
 import Categories from '@/components/app/categories/Categories'
-import ProductsByCategory from '@/components/app/categories/ProductsByCategory'
 
 import { useProductsCategories } from '@/hooks/useProductsCategories'
 import CategoryGroup from '@/components/app/categories/CategoryGroup'
