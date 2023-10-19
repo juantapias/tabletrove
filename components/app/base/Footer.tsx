@@ -47,7 +47,7 @@ export default function Footer() {
 
   return (
     <div>
-      <div className='fixed bottom-0 bg-white rounded-t-3xl px-4 w-full'>
+      <div className='fixed bottom-0 bg-white rounded-t-3xl px-4 w-full z-50'>
         <div className='grid grid-rows-1'>
           <div className='grid grid-cols-5'>
             {menuItem.map((menu, key) => (

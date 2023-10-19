@@ -7,8 +7,8 @@ import { IBooking, ICategory, IProduct, IProm } from '@/utils'
 
 type AppState = {
   isLoading: boolean
-  isServices: boolean
-  inRestaurant: boolean
+  // isServices: boolean
+  // inRestaurant: boolean
   booking?: IBooking
   products: IProduct[]
   categories: ICategory[]
@@ -18,8 +18,8 @@ type AppState = {
 
 const initialState: AppState = {
   isLoading: false,
-  isServices: false,
-  inRestaurant: false,
+  // isServices: false,
+  // inRestaurant: false,
   products: [],
   categories: [],
   proms: [],
@@ -31,14 +31,14 @@ type Action =
       type: 'SET_LOADING'
       payload: boolean
     }
-  | {
-      type: 'SET_IS_SERVICES'
-      payload: boolean
-    }
-  | {
-      type: 'SET_IN_RESTAURANT'
-      payload: boolean
-    }
+  // | {
+  //     type: 'SET_IS_SERVICES'
+  //     payload: boolean
+  //   }
+  // | {
+  //     type: 'SET_IN_RESTAURANT'
+  //     payload: boolean
+  //   }
   | {
       type: 'SET_PRODUCTS'
       payload: IProduct[]
@@ -78,10 +78,10 @@ const reducer = (state: AppState, action: Action) => {
   switch (action.type) {
     case 'SET_LOADING':
       return { ...state, isLoading: action.payload }
-    case 'SET_IS_SERVICES':
-      return { ...state, isServices: action.payload }
-    case 'SET_IN_RESTAURANT':
-      return { ...state, inRestaurant: action.payload }
+    // case 'SET_IS_SERVICES':
+    //   return { ...state, isServices: action.payload }
+    // case 'SET_IN_RESTAURANT':
+    //   return { ...state, inRestaurant: action.payload }
     case 'SET_PRODUCTS':
       return { ...state, products: action.payload }
     case 'SET_CATEGORIES':
@@ -128,24 +128,24 @@ const useAppState = () => {
 
   const isLoading = (isLoading: boolean) => {
     dispatch({
-      type: 'SET_IS_SERVICES',
+      type: 'SET_LOADING',
       payload: isLoading
     })
   }
 
-  const setIsServices = (isServices: boolean) => {
-    dispatch({
-      type: 'SET_IS_SERVICES',
-      payload: isServices
-    })
-  }
+  // const setIsServices = (isServices: boolean) => {
+  //   dispatch({
+  //     type: 'SET_IS_SERVICES',
+  //     payload: isServices
+  //   })
+  // }
 
-  const setInRestaurant = (inRestaurant: boolean) => {
-    dispatch({
-      type: 'SET_IN_RESTAURANT',
-      payload: inRestaurant
-    })
-  }
+  // const setInRestaurant = (inRestaurant: boolean) => {
+  //   dispatch({
+  //     type: 'SET_IN_RESTAURANT',
+  //     payload: inRestaurant
+  //   })
+  // }
 
   const setProducts = useCallback(
     (products: IProduct[]) => {
@@ -215,8 +215,8 @@ const useAppState = () => {
   return {
     ...state,
     isLoading,
-    setIsServices,
-    setInRestaurant,
+    // setIsServices,
+    // setInRestaurant,
     setProducts,
     setCategories,
     setProms,

@@ -9,6 +9,7 @@ import { useRestaurant } from '@/hooks/useRestaurant'
 import FeaturedCategories from '@/components/app/categories/FeaturedCategories'
 import FeaturedProducts from '@/components/app/products/FeaturedProducts'
 import Header from '@/components/app/base/Header'
+import SingleArticle from '@/components/app/shared/SingleArticle'
 
 type IProps = {
   restaurantSlug: string
@@ -18,10 +19,10 @@ export default function Home({ restaurantSlug }: IProps) {
   const { data: restaurant, isFetching } = useRestaurant(restaurantSlug)
 
   return (
-    <Fragment >
-      <Header title="Inicio" isHome />
+    <Fragment>
+      <Header title='Inicio' isHome />
       <FeaturedProms loading={isFetching} />
-      <div className="content-home space-y-4">
+      <div className='content-home space-y-4'>
         <FeaturedCategories
           loading={isFetching}
           restaurant={restaurantSlug}
@@ -35,6 +36,7 @@ export default function Home({ restaurantSlug }: IProps) {
         <InfoSites loading={isFetching} info={restaurant?.info} />
         <InfoSocial loading={isFetching} info={restaurant?.info} />
       </div>
+      
     </Fragment>
   )
 }

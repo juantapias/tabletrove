@@ -206,7 +206,7 @@ body {
 }
 
 .slick-dots {
-  bottom: 50px;
+  bottom: 70px;
 }
 
 .slick-dots li button:before {
@@ -215,4 +215,25 @@ body {
 
 .slick-dots li.slick-active button:before {
   color: #FFF;
+}
+
+/* - - - - - - - - -  
+* RenderSingle
+* - - - - - - - - -  */
+
+.render-single {
+  background-color: #FDF3E0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: all 300ms ease;
+  transform: translateY(1000px);
+  width: 100%;
+  z-index: 30;
+}
+
+.render-single.active {
+  overflow-y: scroll;
+  transform: translateY(0px);
 }

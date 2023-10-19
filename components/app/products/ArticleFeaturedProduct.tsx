@@ -1,21 +1,26 @@
 import Image from 'next/image'
 import { cn, formatPrice } from '@/lib/utils'
 import { IProduct } from '@/utils'
+import { Dispatch, SetStateAction } from 'react'
 
 type IProp = {
   product: IProduct | undefined
+  setSelectedProduct: Dispatch<SetStateAction<IProduct | undefined>>
 }
 
-export default function ArticleFeaturedProduct({ product }: IProp) {
-  
+export default function ArticleFeaturedProduct({
+  product,
+  setSelectedProduct,
+}: IProp) {
   return (
     <article
       className={cn(
         true ? 'h-52' : 'h-60',
         ' w-48 bg-white p-4 rounded-xl flex flex-col items-start justify-between'
       )}
-      // onClick={handleSelectedProduct}
-    >
+      onClick={() => {
+        setSelectedProduct(product)
+      }}>
       <figure className='w-full flex justify-center'>
         <Image
           src={product?.thumbnail?.url || ''}

@@ -43,6 +43,7 @@ export interface ICategory {
   description: string
   icon: IImage
   thumbnail: IImage
+  products: IProduct[]
 }
 
 export interface IProm {

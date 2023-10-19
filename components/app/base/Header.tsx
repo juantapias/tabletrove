@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { useAppStateContext } from '@/context/AppStateContext'
 
@@ -17,6 +17,9 @@ type IHeader = {
 
 export default function Header({ goBack, title, isHome }: IHeader) {
   const router = useRouter()
+  const pathname = usePathname()
+  const restaurantPath = pathname.split('/')[1]
+  
   const { /*inRestaurant,*/ cart } = useAppStateContext()
 
   const [stickyMenu, setStickyMenu] = useState<boolean>(false)
@@ -38,7 +41,7 @@ export default function Header({ goBack, title, isHome }: IHeader) {
       className={cn(
         isHome ? 'fixed' : 'bg-site',
         stickyMenu ? 'bg-site' : 'bg-transparent',
-        'w-full z-20 py-2 transition-all duration-150 ease-in-out'
+        'w-full z-10 py-2 transition-all duration-150 ease-in-out'
       )}>
       <div className='container mx-auto px-4'>
         <div className='grid grid-rows-1'>
@@ -65,7 +68,7 @@ export default function Header({ goBack, title, isHome }: IHeader) {
               <Fragment>
                 {cart && (*/}
             <Link
-              href='/cart'
+              href={`/${restaurantPath}/cart`}
               className='flex items-center justify-center ml-auto bg-white rounded-full h-10 w-10 shadow-md relative'>
               <span className='absolute right-0 top-0 rounded-full bg-primary text-white text-xs h-4 w-4 flex items-center justify-center'>
                 {cart?.length || 0}

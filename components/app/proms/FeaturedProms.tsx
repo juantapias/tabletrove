@@ -1,5 +1,6 @@
 import Slider from 'react-slick'
 import { Skeleton } from '@/components/ui/skeleton'
+import ArticleFeaturedProms from './ArticleFeaturedProms'
 
 type IProps = {
   loading: boolean
@@ -22,11 +23,7 @@ export default function FeaturedProms({ loading }: IProps) {
             <Slider {...settings}>
               {!loading
                 ? Array.from(new Array(5)).map((_, key) => (
-                    <div key={key} className='h-[400px] bg-red-300'>
-                      <div className='h-full flex items-center justify-center'>
-                        <h1>Promoción</h1>
-                      </div>
-                    </div>
+                    <ArticleFeaturedProms key={key} />
                   ))
                 : Array.from(new Array(5)).map((_, key) => (
                     <Skeleton key={key} className='h-[400px] w-full' />
