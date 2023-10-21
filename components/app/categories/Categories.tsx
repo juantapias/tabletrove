@@ -4,15 +4,19 @@ import Link from 'next/link'
 import ArticleCategory from './ArticleCategory'
 import { ICategory } from '@/utils'
 import { Dispatch, SetStateAction } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type IProps = {
   loading: boolean
-  categories: ICategory[] | undefined
+  restaurant: string
+  categories: ICategory[] | undefined
   filterCategory: string | undefined
   setFilterCategory: Dispatch<SetStateAction<string | undefined>>
 }
 
 export default function Categories({
+  loading,
+  restaurant,
   categories,
   filterCategory,
   setFilterCategory,
@@ -26,7 +30,7 @@ export default function Categories({
               Categorías
             </h2>
             <Link
-              href='/menu/category'
+              href={`/${restaurant}/menu/categories`}
               className='text-xs font-normal text-copy'>
               Ver más
             </Link>
@@ -34,14 +38,20 @@ export default function Categories({
 
           <div className='inline-flex overflow-x-scroll not-scroll'>
             <div className='space-x-4 flex'>
-              {categories?.map((category, key) => (
-                <ArticleCategory
-                  key={key}
-                  category={category}
-                  filterCategory={filterCategory}
-                  setFilterCategory={setFilterCategory}
-                />
-              ))}
+              {!loading
+                ? categories?.map((category, key) => (
+                    <ArticleCategory
+                      key={key}
+                      category={category}
+                      filterCategory={filterCategory}
+                      setFilterCategory={setFilterCategory}
+                    />
+                  ))
+                : Array.from(new Array(5)).map((_, index) => (
+                    <div key={index} className='space-x-4'>
+                      <Skeleton className='h-[90px] w-[90px] rounded-full' />
+                    </div>
+                  ))}
             </div>
           </div>
         </div>

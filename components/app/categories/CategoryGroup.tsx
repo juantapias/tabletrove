@@ -1,5 +1,7 @@
+import { Skeleton } from '@/components/ui/skeleton'
+import ArticleCategoryCard from './ArticleCategoryCard'
+
 import { ICategory } from '@/utils'
-import Products from '../products/Products'
 
 type IProps = {
   loading: boolean
@@ -9,16 +11,16 @@ type IProps = {
 export default function CategoryGroup({ loading, categories }: IProps) {
   return (
     <div className='container mx-auto px-4'>
-      <div className='grid grid-cols-1 gap-4'>
-        {categories?.map(
-          (category, key) =>
-            category.products.length > 0 && (
-              <div key={key}>
-                <h3>{category.name}</h3>
-                <Products products={category.products} loading={loading} />
-              </div>
-            )
-        )}
+      <div className='grid grid-rows-1'>
+        <div className='grid grid-cols-2 gap-4'>
+          {!loading ? (
+            categories?.map((category, index) => (
+              <ArticleCategoryCard key={index} category={category} />
+            ))
+          ) : (
+            <Skeleton className='rounded-lg h-32 w-full' />
+          )}
+        </div>
       </div>
     </div>
   )

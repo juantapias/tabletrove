@@ -9,7 +9,6 @@ import { useRestaurant } from '@/hooks/useRestaurant'
 import FeaturedCategories from '@/components/app/categories/FeaturedCategories'
 import FeaturedProducts from '@/components/app/products/FeaturedProducts'
 import Header from '@/components/app/base/Header'
-import SingleArticle from '@/components/app/shared/SingleArticle'
 
 type IProps = {
   restaurantSlug: string
@@ -36,7 +35,6 @@ export default function Home({ restaurantSlug }: IProps) {
         <InfoSites loading={isFetching} info={restaurant?.info} />
         <InfoSocial loading={isFetching} info={restaurant?.info} />
       </div>
-      
     </Fragment>
   )
 }
