@@ -22,7 +22,7 @@ export default function FeaturedCategories({
               Categorías
             </h2>
             <Link
-              href={`/${restaurant}/categories`}
+              href={`${restaurant}/menu/categories`}
               className='text-xs font-normal text-copy'>
               Ver más
             </Link>
