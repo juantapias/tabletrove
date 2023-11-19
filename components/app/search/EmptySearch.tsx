@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 type IProps = {
   title: string
@@ -6,6 +9,9 @@ type IProps = {
   goHome?: boolean
 }
 export default function EmptySearch({ title, description, goHome }: IProps) {
+  const pathname = usePathname()
+  const restaurantPath = pathname.split('/')[1]
+
   return (
     <div className='container mx-auto px-4'>
       <div className='grid grid-rows-1'>
@@ -17,7 +23,7 @@ export default function EmptySearch({ title, description, goHome }: IProps) {
           {goHome && (
             <div className='flex justify-center'>
               <Link
-                href='/'
+                href={`/${restaurantPath}`}
                 className='bg-primary text-white rounded-lg px-4 py-2 text-base font-semibold'>
                 Volver al inicio
               </Link>

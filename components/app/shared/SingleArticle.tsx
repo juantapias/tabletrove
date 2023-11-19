@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { useAppStateContext } from '@/context/AppStateContext'
 import { IProduct } from '@/utils'
 import { IconX } from '@tabler/icons-react'
+import InputNumber from './InputNumber'
 
 type IProps = {
   render: boolean
@@ -59,7 +60,8 @@ export default function SingleArticle({
     }
   }
   return (
-    <div className={cn(render && 'active z-30', 'render-single overflow-hidden')}>
+    <div
+      className={cn(render && 'active z-30', 'render-single overflow-hidden')}>
       <div className='mx-auto'>
         <div className='grid grid-rows-1'>
           <div className='grid grid-cols-1'>
@@ -107,6 +109,42 @@ export default function SingleArticle({
                 <p className='font-semibold text-2xl text-center'>
                   ${product?.price}
                 </p>
+              </div>
+            </div>
+
+            <div
+              className={cn(
+                product?.description && product?.description.length > 500
+                  ? 'sticky'
+                  : 'fixed',
+                'add-product fixed bottom-12 left-0 w-full z-10'
+              )}>
+              {isSuccess && (
+                <div className='alert fixed flex justify-center items-center rounded-t-3xl px-4 w-full left-0 bottom-[70px] bg-red-400 h-8'>
+                  <p className='text-center text-xs'>
+                    Se añadio el producto correctamente
+                  </p>
+                </div>
+              )}
+              <div
+                className={cn(
+                  isSuccess ? 'rounded-none' : 'rounded-t-3xl',
+                  'flex items-start justify-between bg-white pt-4 pb-10 px-4 space-x-4 transition-all duration-150 ease-in-out'
+                )}>
+                <div className='w-1/2'>
+                  <InputNumber
+                    quantity={quantity}
+                    min={1}
+                    dispatchQuantity={setQuantity}
+                  />
+                </div>
+                <div className='w-1/2'>
+                  <button
+                    className='w-full rounded-lg flex items-center justify-around bg-primary mx-auto p-2 text-white'
+                    onClick={handleAddToCart}>
+                    <span>Agregar</span> <span>${product?.price}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
