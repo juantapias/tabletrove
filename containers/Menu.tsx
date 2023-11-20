@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Header from '@/components/app/base/Header'
 import Categories from '@/components/app/categories/Categories'
 
@@ -24,21 +24,25 @@ export default function Menu({ restaurantSlug }: IProps) {
   }
 
   return (
-    <div className='grid grid-rows-1'>
-      <div className='grid grid-cols-1 gap-4'>
-        <Header title='Menú' />
-        <Categories
-          loading={isFetching}
-          restaurant={restaurantSlug}
-          categories={categories}
-          filterCategory={filterCategory}
-          setFilterCategory={setFilterCategory}
-        />
-        <CategoryProducts
-          loading={isFetching}
-          categories={filterProductByCategory()}
-        />
+    <Fragment>
+      <Header title='Menú' />
+      <div className='main'>
+        <div className='grid grid-rows-1'>
+          <div className='grid grid-cols-1 gap-4'>
+            <Categories
+              loading={isFetching}
+              restaurant={restaurantSlug}
+              categories={categories}
+              filterCategory={filterCategory}
+              setFilterCategory={setFilterCategory}
+            />
+            <CategoryProducts
+              loading={isFetching}
+              categories={filterProductByCategory()}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }

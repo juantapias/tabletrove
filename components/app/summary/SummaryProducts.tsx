@@ -1,3 +1,5 @@
+import SummaryArticle from './SummaryArticle'
+
 import { IProduct } from '@/utils'
 
 type IProps = {
@@ -6,6 +8,10 @@ type IProps = {
 
 export default function SummaryProducts({ products }: IProps) {
   return (
-    <div>SummaryProducts</div>
+    <div>
+      {products.map((product, key) => (
+        <SummaryArticle key={key} product={product} />
+      ))}
+    </div>
   )
 }

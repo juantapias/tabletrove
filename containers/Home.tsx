@@ -19,21 +19,23 @@ export default function Home({ restaurantSlug }: IProps) {
 
   return (
     <Fragment>
-      <Header title='Inicio' isHome />
-      <FeaturedProms loading={isFetching} />
-      <div className='content-home space-y-4'>
-        <FeaturedCategories
-          loading={isFetching}
-          restaurant={restaurantSlug}
-          categories={restaurant?.categories}
-        />
-        <FeaturedProducts
-          loading={isFetching}
-          restaurant={restaurantSlug}
-          products={restaurant?.products}
-        />
-        <InfoSites loading={isFetching} info={restaurant?.info} />
-        <InfoSocial loading={isFetching} info={restaurant?.info} />
+      <Header title={restaurant?.name} isHome />
+      <div className='main'>
+        <FeaturedProms loading={isFetching} />
+        <div className='content-home space-y-4'>
+          <FeaturedCategories
+            loading={isFetching}
+            restaurant={restaurantSlug}
+            categories={restaurant?.categories}
+          />
+          <FeaturedProducts
+            loading={isFetching}
+            restaurant={restaurantSlug}
+            products={restaurant?.products}
+          />
+          <InfoSites loading={isFetching} info={restaurant?.info} />
+          <InfoSocial loading={isFetching} info={restaurant?.info} />
+        </div>
       </div>
     </Fragment>
   )

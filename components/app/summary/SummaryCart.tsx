@@ -8,10 +8,11 @@ import { IProduct } from '@/utils'
 import { IconTrash } from '@tabler/icons-react'
 
 type IProps = {
+  restaurant: string
   products: IProduct[]
 }
 
-export default function SummaryCart({ products }: IProps) {
+export default function SummaryCart({ restaurant, products }: IProps) {
   const { cart, clearCart } = useAppStateContext()
 
   return (
@@ -27,7 +28,7 @@ export default function SummaryCart({ products }: IProps) {
               </div>
 
               <SummaryProducts products={products} />
-              <SummaryTotal products={products} />
+              <SummaryTotal restaurant={restaurant} products={products} />
             </div>
           ) : (
             <EmptySearch

@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 type IHeader = {
   goBack?: boolean
-  title: string
+  title: string | undefined
   isHome?: boolean
 }
 
@@ -19,7 +19,7 @@ export default function Header({ goBack, title, isHome }: IHeader) {
   const router = useRouter()
   const pathname = usePathname()
   const restaurantPath = pathname.split('/')[1]
-  
+
   const { /*inRestaurant,*/ cart } = useAppStateContext()
 
   const [stickyMenu, setStickyMenu] = useState<boolean>(false)
@@ -39,13 +39,17 @@ export default function Header({ goBack, title, isHome }: IHeader) {
   return (
     <div
       className={cn(
-        isHome ? 'fixed' : 'bg-site',
-        stickyMenu ? 'bg-site' : 'bg-transparent',
-        'w-full z-10 py-2 transition-all duration-150 ease-in-out'
+        'w-full z-10 py-2 transition-all duration-150 ease-in-out bg-site fixed'
       )}>
       <div className='container mx-auto px-4'>
         <div className='grid grid-rows-1'>
           <div className='grid grid-cols-3'>
+            {isHome && !stickyMenu && (
+              <div className='col-span-3'>
+                <h1 className='text-center'>TableTrove</h1>
+              </div>
+            )}
+
             {goBack && (
               <button
                 className='flex items-center justify-center bg-white rounded-full h-10 w-10 shadow-md float-right'
@@ -54,16 +58,25 @@ export default function Header({ goBack, title, isHome }: IHeader) {
               </button>
             )}
 
-            <div className={'flex items-center justify-center col-start-2'}>
-              <h1
-                className={cn(
-                  isHome && stickyMenu ? 'visible' : 'invisible',
-                  !isHome && 'visible',
-                  'text-center capitalize'
-                )}>
-                {title}
-              </h1>
-            </div>
+            {isHome && (
+              <div className='flex items-center col-span-2'>
+                <h1>{title}</h1>
+              </div>
+            )}
+
+            {!isHome && (
+              <div className={'flex items-center justify-center col-start-2'}>
+                <h1
+                  className={cn(
+                    // isHome && stickyMenu ? 'visible' : 'invisible',
+                    // !isHome && 'visible',
+                    'text-center capitalize'
+                  )}>
+                  {title}
+                </h1>
+              </div>
+            )}
+
             {/* {!inRestaurant && ( /*}
               <Fragment>
                 {cart && (*/}

@@ -27,13 +27,19 @@ export default function Search({ restaurantSlug }: IProps) {
         )
 
   return (
-    <div className='grid grid-rows-1'>
-      <div className='grid grid-cols-1 gap-4'>
-        <Header title='Buscar' />
-
-        <SearchForm setQueryFilter={setQueryFilter} />
-        <ResultFilter loading={isFetching} products={searchFilterProducts} />
+    <Fragment>
+      <Header title='Buscar' />
+      <div className='main'>
+        <div className='grid grid-rows-1'>
+          <div className='grid grid-cols-1 gap-4'>
+            <SearchForm setQueryFilter={setQueryFilter} />
+            <ResultFilter
+              loading={isFetching}
+              products={searchFilterProducts}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }

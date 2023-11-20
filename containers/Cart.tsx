@@ -6,13 +6,19 @@ import SummaryCart from '@/components/app/summary/SummaryCart'
 
 import { useAppStateContext } from '@/context/AppStateContext'
 
-export default function Cart() {
+type IProps = {
+  restaurantSlug: string
+}
+
+export default function Cart({ restaurantSlug }: IProps) {
   const { cart } = useAppStateContext()
-  
+
   return (
     <Fragment>
       <Header title='Carrito' goBack />
-      <SummaryCart products={cart} />
+      <div className='main'>
+        <SummaryCart restaurant={restaurantSlug} products={cart} />
+      </div>
     </Fragment>
   )
 }

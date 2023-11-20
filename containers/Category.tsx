@@ -1,5 +1,6 @@
 'use client'
 
+import { Fragment } from 'react'
 import Header from '@/components/app/base/Header'
 import ProductsByCategory from '@/components/app/categories/ProductsByCategory'
 
@@ -16,11 +17,15 @@ export default function Category({ restaurantSlug, category }: IProps) {
     category
   )
   return (
-    <div className='grid grid-rows-1'>
-      <div className='grid grid-cols-1 gap-4'>
-        <Header title={category} goBack />
-        <ProductsByCategory loading={isFetching} category={categories} />
+    <Fragment>
+      <Header title={category} goBack />
+      <div className='main'>
+        <div className='grid grid-rows-1'>
+          <div className='grid grid-cols-1 gap-4'>
+            <ProductsByCategory loading={isFetching} category={categories} />
+          </div>
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }

@@ -52,13 +52,14 @@ export default function SingleArticle({
 
   const handleAddToCart = async () => {
     if (product) {
-      addItemCart({ ...product, quantity: quantity })
-      setIsSuccess(true)
-      setTimeout(() => {
-        setIsSuccess(false)
-      }, 3000)
+      addItemCart(product)
+      // setIsSuccess(true)
+      // setTimeout(() => {
+      //   setIsSuccess(false)
+      // }, 3000)
     }
   }
+
   return (
     <div
       className={cn(render && 'active z-30', 'render-single overflow-hidden')}>
@@ -117,7 +118,7 @@ export default function SingleArticle({
                 product?.description && product?.description.length > 500
                   ? 'sticky'
                   : 'fixed',
-                'add-product fixed bottom-12 left-0 w-full z-10'
+                'add-product fixed bottom-[100px] left-0 w-full z-10'
               )}>
               {isSuccess && (
                 <div className='alert fixed flex justify-center items-center rounded-t-3xl px-4 w-full left-0 bottom-[70px] bg-red-400 h-8'>

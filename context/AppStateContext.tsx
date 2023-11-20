@@ -4,7 +4,6 @@ import { useCallback, useReducer } from 'react'
 import constate from 'constate'
 import { IBooking, ICategory, IProduct, IProm } from '@/utils'
 
-
 type AppState = {
   isLoading: boolean
   // isServices: boolean
@@ -23,7 +22,7 @@ const initialState: AppState = {
   products: [],
   categories: [],
   proms: [],
-  cart: []
+  cart: [],
 }
 
 type Action =
@@ -99,7 +98,7 @@ const reducer = (state: AppState, action: Action) => {
               return { ...prod }
             }
             return prod
-          })
+          }),
         }
       }
       return { ...state, cart: [...state.cart, action.payload] }
@@ -111,12 +110,12 @@ const reducer = (state: AppState, action: Action) => {
             return { ...prod, quantity: action.payload.quantity }
           }
           return prod
-        })
+        }),
       }
     case 'REMOVE_ITEM_CART':
       return {
         ...state,
-        cart: state.cart.filter(prod => prod.id !== action.payload.id)
+        cart: state.cart.filter(prod => prod.id !== action.payload.id),
       }
     case 'CLEAR_CART':
       return { ...state, cart: [] }
@@ -129,7 +128,7 @@ const useAppState = () => {
   const isLoading = (isLoading: boolean) => {
     dispatch({
       type: 'SET_LOADING',
-      payload: isLoading
+      payload: isLoading,
     })
   }
 
@@ -151,7 +150,7 @@ const useAppState = () => {
     (products: IProduct[]) => {
       dispatch({
         type: 'SET_PRODUCTS',
-        payload: products
+        payload: products,
       })
     },
     [dispatch]
@@ -161,7 +160,7 @@ const useAppState = () => {
     (categories: ICategory[]) => {
       dispatch({
         type: 'SET_CATEGORIES',
-        payload: categories
+        payload: categories,
       })
     },
     [dispatch]
@@ -171,7 +170,7 @@ const useAppState = () => {
     (proms: IProm[]) => {
       dispatch({
         type: 'SET_PROMS',
-        payload: proms
+        payload: proms,
       })
     },
     [dispatch]
@@ -181,7 +180,7 @@ const useAppState = () => {
     (booking: IBooking) => {
       dispatch({
         type: 'SET_BOOKING',
-        payload: booking
+        payload: booking,
       })
     },
     [dispatch]
@@ -215,8 +214,6 @@ const useAppState = () => {
   return {
     ...state,
     isLoading,
-    // setIsServices,
-    // setInRestaurant,
     setProducts,
     setCategories,
     setProms,
@@ -224,7 +221,7 @@ const useAppState = () => {
     addItemCart,
     setQuantity,
     removeItemCart,
-    clearCart
+    clearCart,
   }
 }
 

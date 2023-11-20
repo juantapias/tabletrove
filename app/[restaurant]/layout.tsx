@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 
+import { AppStateProvider } from '@/context/AppStateContext'
+
 import Footer from '@/components/app/base/Footer'
 
 import '../globals.css'
@@ -13,8 +15,10 @@ export default function Applayout({
 }) {
   return (
     <>
-      {children}
-      <Footer />
+      <AppStateProvider>
+        {children}
+        <Footer />
+      </AppStateProvider>
     </>
   )
 }

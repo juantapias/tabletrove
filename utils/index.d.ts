@@ -28,12 +28,12 @@ export interface IImage {
 }
 
 export interface IProduct {
-  id: string
-  name: string
-  description: string
-  price: number
+  id?: string
+  name?: string
+  description?: string
+  price?: number
   quantity?: number | undefined
-  thumbnail: IImage
+  thumbnail?: IImage
   tag?: string
 }
 
@@ -59,6 +59,7 @@ export interface Restaurant {
 }
 
 export interface IRestaurant {
+  name: string
   info: IInfo
   categories: ICategory[]
   products: IProduct[]
