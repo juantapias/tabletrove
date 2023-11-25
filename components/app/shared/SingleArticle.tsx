@@ -52,11 +52,11 @@ export default function SingleArticle({
 
   const handleAddToCart = async () => {
     if (product) {
-      addItemCart(product)
-      // setIsSuccess(true)
-      // setTimeout(() => {
-      //   setIsSuccess(false)
-      // }, 3000)
+      addItemCart({ ...product, quantity: quantity })
+      setIsSuccess(true)
+      setTimeout(() => {
+        setIsSuccess(false)
+      }, 3000)
     }
   }
 
@@ -121,7 +121,7 @@ export default function SingleArticle({
                 'add-product fixed bottom-[100px] left-0 w-full z-10'
               )}>
               {isSuccess && (
-                <div className='alert fixed flex justify-center items-center rounded-t-3xl px-4 w-full left-0 bottom-[70px] bg-red-400 h-8'>
+                <div className='alert fixed flex justify-center items-center rounded-t-3xl px-4 w-full left-0 bottom-[195px] bg-red-400 h-8'>
                   <p className='text-center text-xs'>
                     Se añadio el producto correctamente
                   </p>

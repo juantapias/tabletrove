@@ -46,7 +46,7 @@ export default function Header({ goBack, title, isHome }: IHeader) {
           <div className='grid grid-cols-3'>
             {isHome && !stickyMenu && (
               <div className='col-span-3'>
-                <h1 className='text-center'>TableTrove</h1>
+                <h1 className='text-center'>Ubbe</h1>
               </div>
             )}
 

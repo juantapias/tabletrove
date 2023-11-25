@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { useAppStateContext } from '@/context/AppStateContext'
 import { IProduct } from '@/utils'
@@ -14,6 +15,7 @@ type IProps = {
 }
 
 export default function SummaryTotal({ restaurant, products }: IProps) {
+  const router = useRouter()
   const { clearCart } = useAppStateContext()
 
   const { data } = useRestaurant(restaurant)
@@ -32,6 +34,10 @@ export default function SummaryTotal({ restaurant, products }: IProps) {
     whatsAppOrder(order, products, whatsappNumber)
     setIsSubmitting(false)
     clearCart()
+
+    setTimeout(() => {
+      router.push(`/${restaurant}/confirmation`)
+    }, 3000)
   }
   return (
     <div className='border-t border-gray-100'>
